@@ -72,6 +72,10 @@
                 MIDDLE: THREE.MOUSE.DOLLY,
                 // RIGHT: THREE.MOUSE.PAN
             }
+            controls.touches = {
+                ONE: THREE.TOUCH.PAN,
+                TWO: THREE.TOUCH.DOLLY_PAN
+            }
             controls.update()
 
 
@@ -126,7 +130,6 @@
 
                 });
                 scene.add(gltf.scene);
-                // animate();
             });
             loader.load('./assets/tree_2/scene.gltf', function (gltf) {
                 tree = gltf.scene;
@@ -142,7 +145,6 @@
 
                 });
                 scene.add(gltf.scene);
-                // animate();
             });
             loader.load('./assets/tree_2/scene.gltf', function (gltf) {
                 tree = gltf.scene;
@@ -158,7 +160,6 @@
 
                 });
                 scene.add(gltf.scene);
-                // animate();
             });
 
             loader.load('./assets/car/scene.gltf', function (gltf) {
@@ -176,7 +177,6 @@
 
                 });
                 scene.add(gltf.scene);
-                // animate();
             });
 
             fogColor = new THREE.Color(0xf5ba19);
@@ -196,16 +196,12 @@
         function onDocumentKeyDown(event) {
             var keyCode = event.which;
             if (keyCode == key.up) {
-                console.log('moving-- up')
                 car.position.z += ySpeed;
             } else if (keyCode == key.down) {
-                console.log('moving--')
                 car.position.z -= ySpeed;
             } else if (keyCode == key.left) {
-                console.log('moving--')
                 car.position.x -= xSpeed;
             } else if (keyCode == key.right) {
-                console.log('moving--')
                 car.position.x += xSpeed;
             } else if (keyCode == 32) {
                 car.position.x -= xSpeed;
