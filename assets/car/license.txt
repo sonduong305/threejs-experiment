@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly Pick Up Car
+* source:	https://sketchfab.com/3d-models/low-poly-pick-up-car-e52b24610d6c4824b46e7e4982faf691
+* author:	Arifido._ (https://sketchfab.com/Arifido._)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly Pick Up Car" (https://sketchfab.com/3d-models/low-poly-pick-up-car-e52b24610d6c4824b46e7e4982faf691) by Arifido._ (https://sketchfab.com/Arifido._) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
