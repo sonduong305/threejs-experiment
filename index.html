@@ -201,12 +201,12 @@
                 scene.add(gltf.scene);
             });
 
-            loader.load('./assets/car/scene.gltf', function (gltf) {
+            loader.load('./assets/pickup/car/Carbody.gltf', function (gltf) {
                 car = gltf.scene;
-                car.scale.set(1.2, 1.2, 1.2);
-                car.position.y = 1;
-                car.position.x = 3;
-                car.rotateY(Math.PI * 0.17)
+                car.scale.set(50, 50, 50);
+                // car.position.y = 1;
+                // car.position.x = 3;
+                // car.rotateY(Math.PI * 0.17)
                 gltf.scene.traverse(function (node) {
                     if (node.isMesh) {
                         node.castShadow = true;
@@ -229,11 +229,11 @@
                 world.step(1 / 60);
                 // update the chassis position
                 car.position.copy(chassisBody.position);
-                car.position.y = chassisBody.position.y + 0.32;
-                // car.position.x = chassisBody.position.x + 3;
+                car.position.y = chassisBody.position.y - 0.7;
+                car.position.x = chassisBody.position.x - 0.1;
                 car.quaternion.z = chassisBody.quaternion.z;
                 car.quaternion.x = chassisBody.quaternion.x;
-                car.quaternion.y = chassisBody.quaternion.y + Math.PI * 0.085;
+                car.quaternion.y = chassisBody.quaternion.y;
             }
 
             function render() {

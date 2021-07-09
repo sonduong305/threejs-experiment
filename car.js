@@ -50,13 +50,13 @@ function add_car(scene, plane) {
     });
 
     world.addContactMaterial(wheelGroundContactMaterial);
-    var offset_x = 0;
+    var offset_x = 0.1;
 
     // car physics body
     var chassisShape = new CANNON.Box(new CANNON.Vec3(1, 0.3, 2));
     var chassisBody = new CANNON.Body({ mass: 150 });
     chassisBody.addShape(chassisShape);
-    chassisBody.position.set(0 + offset_x, 0.2, 0);
+    chassisBody.position.set(0, 0.2, 0);
     chassisBody.angularVelocity.set(0, 0, 0); // initial velocity
 
     // car visual body
@@ -76,7 +76,7 @@ function add_car(scene, plane) {
 
     // wheel options
     var options = {
-        radius: 0.3,
+        radius: 0.4,
         directionLocal: new CANNON.Vec3(0, -1, 0),
         suspensionStiffness: 45,
         suspensionRestLength: 0.4,
@@ -92,19 +92,20 @@ function add_car(scene, plane) {
         useCustomSlidingRotationalSpeed: true,
     };
 
-    var axlewidth = 0.8;
+    var axlewidth = 0.9;
     var axlelong = 1.84;
     var offset_long = -0.2;
-    options.chassisConnectionPointLocal.set(axlewidth + offset_x, 0, -1 * axlelong + offset_long);
+    var offset_y = 0;
+    options.chassisConnectionPointLocal.set(axlewidth + offset_x, 0 + offset_y, -1 * axlelong + offset_long);
     vehicle.addWheel(options);
 
-    options.chassisConnectionPointLocal.set(-axlewidth + offset_x, 0, -1 * axlelong + offset_long);
+    options.chassisConnectionPointLocal.set(-axlewidth + offset_x, 0 + offset_y, -1 * axlelong + offset_long);
     vehicle.addWheel(options);
 
-    options.chassisConnectionPointLocal.set(axlewidth + offset_x, 0, 1 * axlelong + offset_long);
+    options.chassisConnectionPointLocal.set(axlewidth + offset_x, 0 + offset_y, 1 * axlelong + offset_long);
     vehicle.addWheel(options);
 
-    options.chassisConnectionPointLocal.set(-axlewidth + offset_x, 0, 1 * axlelong + offset_long);
+    options.chassisConnectionPointLocal.set(-axlewidth + offset_x, 0 + offset_y, 1 * axlelong + offset_long);
     vehicle.addWheel(options);
 
     vehicle.addToWorld(world);
@@ -120,7 +121,28 @@ function add_car(scene, plane) {
         body.addShape(shape, new CANNON.Vec3(), q);
         wheelBodies.push(body);
         // wheel visual body
-        var geometry = new THREE.CylinderGeometry(wheel.radius, wheel.radius, 0.1, 32);
+        // let loader = new THREE.GLTFLoader();
+        // loader.load('./assets/pickup/wheel/Wheel.gltf', function (gltf) {
+        //     var wheel_v = gltf.scene;
+        //     wheel_v.scale.set(50, 50, 50);
+        //     var bbox = new THREE.Box3().setFromObject(wheel_v);
+        //     console.log(bbox.max.x - bbox.min.x)
+        //     console.log(bbox.max.y - bbox.min.y)
+        //     console.log(bbox.max.z - bbox.min.z)
+        //     // wheel_v.position.y = 1;
+        //     // wheel_v.position.x = 3;
+        //     // wheel_v.rotateY(Math.PI * 0.17)
+        //     gltf.scene.traverse(function (node) {
+        //         if (node.isMesh) {
+        //             node.castShadow = true;
+        //             node.receiveShadow = true;
+        //         }
+
+        //     });
+        //     wheelVisuals.push(wheel_v);
+        //     scene.add(gltf.scene);
+        // });
+        var geometry = new THREE.CylinderGeometry(wheel.radius, wheel.radius, 0.4, 32);
         var material = new THREE.MeshPhongMaterial({
             color: 0xd0901d,
             emissive: 0xaa0000,
